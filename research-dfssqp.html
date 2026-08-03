@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equality-Constrained Single-Index Learning · Hoonki Yeo</title>
+  <meta name="description" content="A research project on derivative-free stochastic SQP for equality-constrained single-index learning with noisy scalar validation feedback." />
+  <meta name="theme-color" content="#0b0d11" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0d11;
+      --surface: #14171e;
+      --surface-2: #10131a;
+      --ink: #eceef2;
+      --muted: #a0a6b1;
+      --faint: #666d79;
+      --accent: #83a9ff;
+      --accent-soft: rgba(131, 169, 255, 0.12);
+      --accent-line: rgba(131, 169, 255, 0.36);
+      --line: rgba(255, 255, 255, 0.085);
+      --line-soft: rgba(255, 255, 255, 0.055);
+      --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --maxw: 920px;
+      --nav-h: 66px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 13, 17, 0.78);
+      backdrop-filter: saturate(160%) blur(15px);
+      -webkit-backdrop-filter: saturate(160%) blur(15px);
+    }
+    .nav-inner { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { color: var(--ink); font-size: 1.01rem; font-weight: 600; letter-spacing: -0.015em; text-decoration: none; white-space: nowrap; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { padding: 8px 13px; border-radius: 7px; color: var(--muted); font-size: 0.88rem; font-weight: 500; text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); background: var(--line-soft); }
+    .nav-links .active { color: var(--accent); }
+    .ext { margin-left: 2px; color: var(--faint); font-size: 0.72rem; }
+
+    .project-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 82px 0 62px;
+      border-bottom: 1px solid var(--line);
+    }
+    .project-hero::before {
+      content: "";
+      position: absolute;
+      top: -210px;
+      left: 2%;
+      width: 650px;
+      height: 500px;
+      background: radial-gradient(closest-side, rgba(131, 169, 255, 0.16), transparent 72%);
+      pointer-events: none;
+    }
+    .project-hero .wrap { position: relative; z-index: 1; }
+    .back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; text-decoration: none; }
+    .back:hover { color: var(--accent); }
+    .eyebrow { color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    h1 { max-width: 20ch; margin: 14px 0 20px; font-size: clamp(2.45rem, 6.5vw, 4.15rem); font-weight: 600; letter-spacing: -0.046em; line-height: 1.04; }
+    .hero-lede { max-width: 66ch; color: var(--muted); font-size: 1.08rem; line-height: 1.72; }
+    .hero-lede strong { color: var(--ink); font-weight: 600; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(20,23,30,.72); color: var(--muted); font-family: var(--font-mono); font-size: 0.68rem; }
+    .chip.accent { border-color: var(--accent-line); background: var(--accent-soft); color: #b9cbf7; }
+
+    main section { padding: 58px 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 190px 1fr; gap: 28px; margin-bottom: 28px; }
+    .section-label { color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; }
+    .section-title { margin-top: -5px; font-size: 1.45rem; font-weight: 600; letter-spacing: -0.025em; }
+    .section-copy { max-width: 68ch; color: var(--muted); }
+    .section-copy strong { color: var(--ink); }
+
+    .method-note {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 15px;
+      align-items: start;
+      margin-top: 26px;
+      padding: 18px 20px;
+      border: 1px solid var(--accent-line);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }
+    .method-note .mark { color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; }
+    .method-note p { color: #b8c2d6; font-size: 0.93rem; }
+
+    .question-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .question-card { padding: 24px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
+    .question-card.primary { border-color: var(--accent-line); background: linear-gradient(150deg, rgba(131,169,255,.10), rgba(20,23,30,.96) 52%); }
+    .question-kind { margin-bottom: 13px; color: var(--accent); font-family: var(--font-mono); font-size: 0.67rem; letter-spacing: 0.09em; text-transform: uppercase; }
+    .question-card h3 { margin-bottom: 11px; font-size: 1.02rem; line-height: 1.48; }
+    .question-card p { color: var(--muted); font-size: 0.9rem; }
+
+    .formula-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .formula-card { padding: 24px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-2); }
+    .formula-label { margin-bottom: 17px; color: var(--faint); font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .equation { overflow-x: auto; padding: 5px 0 8px; color: #f3f5f9; font-family: "Cambria Math", "Times New Roman", serif; font-size: clamp(1.12rem, 3vw, 1.38rem); white-space: nowrap; }
+    .formula-card p { margin-top: 14px; color: var(--muted); font-size: 0.88rem; }
+
+    .flow-panel { overflow: hidden; margin-top: 18px; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, #141924, #0e1117); }
+    .flow-panel svg { width: 100%; height: auto; min-height: 260px; display: block; }
+
+    .pipeline { display: grid; grid-template-columns: repeat(3, 1fr); overflow: hidden; margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; }
+    .pipeline-step { padding: 19px 20px; background: var(--surface-2); }
+    .pipeline-step + .pipeline-step { border-left: 1px solid var(--line); }
+    .pipeline-step .num { color: var(--accent); font-family: var(--font-mono); font-size: 0.65rem; }
+    .pipeline-step h4 { margin: 7px 0 4px; font-size: 0.92rem; }
+    .pipeline-step p { color: var(--faint); font-size: 0.78rem; line-height: 1.5; }
+
+    .evolution { display: grid; gap: 0; border-left: 1px solid var(--accent-line); margin-left: 8px; }
+    .evolution-item { position: relative; padding: 0 0 28px 30px; }
+    .evolution-item:last-child { padding-bottom: 0; }
+    .evolution-item::before { content: ""; position: absolute; top: 6px; left: -5px; width: 9px; height: 9px; border: 1.5px solid var(--accent); border-radius: 50%; background: var(--bg); }
+    .evolution-phase { margin-bottom: 4px; color: var(--accent); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .evolution-item h3 { margin-bottom: 5px; font-size: 1rem; }
+    .evolution-item p { max-width: 66ch; color: var(--muted); font-size: 0.9rem; }
+
+    .status-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .status-card { display: grid; grid-template-columns: 12px 1fr; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
+    .status-dot { width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; background: var(--faint); }
+    .status-dot.current { background: var(--accent); box-shadow: 0 0 0 5px rgba(131,169,255,.10); }
+    .status-card h4 { font-size: 0.9rem; }
+    .status-card p { margin-top: 3px; color: var(--faint); font-size: 0.78rem; }
+
+    .output-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+    .output-pill { padding: 8px 11px; border: 1px solid var(--line); border-radius: 7px; color: var(--faint); font-family: var(--font-mono); font-size: 0.68rem; }
+
+    footer { padding: 42px 0 62px; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; color: var(--faint); font-family: var(--font-mono); font-size: 0.72rem; }
+    .foot a { color: var(--muted); text-decoration: none; }
+    .foot a:hover { color: var(--accent); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 0 22px; }
+      .nav-links a { padding: 8px 9px; font-size: .83rem; }
+      .project-hero { padding: 57px 0 46px; }
+      h1 { font-size: clamp(2.15rem, 12vw, 3.1rem); }
+      main section { padding: 45px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 12px; }
+      .question-grid, .formula-grid, .status-grid { grid-template-columns: 1fr; }
+      .pipeline { grid-template-columns: 1fr; }
+      .pipeline-step + .pipeline-step { border-left: 0; border-top: 1px solid var(--line); }
+      .flow-panel svg { min-height: 330px; }
+      .foot { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner wrap">
+      <a class="brand" href="index.html#home">Hoonki Yeo</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#research" class="active">Research</a>
+        <a href="cv.pdf" target="_blank" rel="noopener">CV <span class="ext" aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-hero">
+      <div class="wrap">
+        <a class="back" href="index.html#research">← Back to Research</a>
+        <div class="eyebrow">Current research project</div>
+        <h1>Equality-Constrained Single-Index Learning via DF-SSQP</h1>
+        <p class="hero-lede">
+          A methodological study of <strong>derivative-free stochastic SQP</strong> for a constrained profile-optimization
+          problem whose objective can only be evaluated through stochastic inner training and noisy scalar validation feedback.
+        </p>
+        <div class="hero-meta">
+          <span class="chip accent">Work in progress</span>
+          <span class="chip">with Prof. Sen Na</span>
+          <span class="chip">Georgia Tech ISyE</span>
+          <span class="chip">stochastic black-box optimization</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Overview</div>
+          <div>
+            <h2 class="section-title">Optimization methodology first</h2>
+            <p class="section-copy">
+              The outer decision variable is a response-directed direction <strong>w</strong>. For every candidate direction,
+              a neural prediction model is retrained using a fixed finite-step stochastic procedure. The resulting validation
+              loss is one noisy scalar oracle evaluation for DF-SSQP, while the unit-norm equality constraint identifies a direction
+              rather than an arbitrary scale.
+            </p>
+            <div class="method-note">
+              <span class="mark">ROLE</span>
+              <p>Future benchmark-risk forecasting is the real-data testbed. The primary research focus is optimization in the stochastic, equality-constrained, zero-order setting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Questions</div>
+          <h2 class="section-title">Two levels of inquiry</h2>
+        </div>
+        <div class="question-grid">
+          <article class="question-card primary">
+            <div class="question-kind">Primary · Methodological</div>
+            <h3>Can DF-SSQP optimize an equality-constrained direction when every objective evaluation requires stochastic inner training?</h3>
+            <p>The optimizer observes neither derivatives nor fitted inner parameters—only noisy scalar validation losses.</p>
+          </article>
+          <article class="question-card">
+            <div class="question-kind">Secondary · Application</div>
+            <h3>Does a response-directed scalar index of industry risk add predictive information for future benchmark risk?</h3>
+            <p>The index is evaluated after controlling for the benchmark’s current aggregate risk state.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Formulation</div>
+          <div>
+            <h2 class="section-title">A stochastic profile objective</h2>
+            <p class="section-copy">The inner model maps the industry-risk vector to a scalar index, while the outer problem selects the index direction from noisy validation feedback.</p>
+          </div>
+        </div>
+
+        <div class="formula-grid">
+          <article class="formula-card">
+            <div class="formula-label">Inner prediction model</div>
+            <div class="equation">ŷ<sub>t</sub> = βu<sub>t</sub> + F<sub>θ</sub>(w<sup>⊤</sup>z<sub>t</sub>)</div>
+            <p>The neural link receives only the scalar index. The coefficient β separately controls for current aggregate benchmark risk.</p>
+          </article>
+          <article class="formula-card">
+            <div class="formula-label">Outer optimization problem</div>
+            <div class="equation">min E<sub>ξ</sub>[L(w, ξ)] &nbsp; s.t. &nbsp; ‖w‖<sub>2</sub> = 1</div>
+            <p>The expectation is over stochastic inner-training randomness; DF-SSQP accesses noisy realizations of the scalar validation loss.</p>
+          </article>
+        </div>
+
+        <div class="pipeline" aria-label="Chronological data pipeline">
+          <div class="pipeline-step"><span class="num">01</span><h4>Training segment</h4><p>Fit β and θ for each candidate w.</p></div>
+          <div class="pipeline-step"><span class="num">02</span><h4>Validation segment</h4><p>Return the scalar oracle value L(w, ξ).</p></div>
+          <div class="pipeline-step"><span class="num">03</span><h4>Test segment</h4><p>Reserve for final out-of-sample evaluation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Optimization loop</div>
+          <div>
+            <h2 class="section-title">What one outer evaluation requires</h2>
+            <p class="section-copy">The expensive, noisy mapping from a candidate direction to validation loss is treated as a black-box oracle.</p>
+          </div>
+        </div>
+        <div class="flow-panel">
+          <svg viewBox="0 0 920 290" role="img" aria-label="Candidate direction, stochastic inner training, validation loss, and DF-SSQP update">
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#6f8fd4" /></marker>
+              <linearGradient id="panel" x1="0" x2="1"><stop offset="0" stop-color="#202737"/><stop offset="1" stop-color="#171c27"/></linearGradient>
+            </defs>
+            <text x="42" y="38" fill="#78849a" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.6">ONE NOISY ZERO-ORDER ORACLE CALL</text>
+            <circle cx="96" cy="132" r="38" fill="#192338" stroke="#83a9ff" stroke-width="1.6"/>
+            <text x="96" y="139" text-anchor="middle" fill="#eef1f7" font-family="Georgia, serif" font-style="italic" font-size="30">w</text>
+            <text x="96" y="194" text-anchor="middle" fill="#758095" font-family="IBM Plex Mono, monospace" font-size="10">candidate direction</text>
+            <line x1="136" y1="132" x2="222" y2="132" stroke="#6f8fd4" stroke-width="1.4" marker-end="url(#arrow)"/>
+            <rect x="230" y="82" width="205" height="100" rx="13" fill="url(#panel)" stroke="#343d50"/>
+            <text x="332" y="117" text-anchor="middle" fill="#eef1f7" font-family="Inter, sans-serif" font-size="14" font-weight="600">Stochastic inner training</text>
+            <text x="332" y="142" text-anchor="middle" fill="#8c96a9" font-family="IBM Plex Mono, monospace" font-size="10">fixed architecture + finite steps</text>
+            <text x="332" y="162" text-anchor="middle" fill="#a8b8d6" font-family="Georgia, serif" font-size="12">β(w, ξ), θ(w, ξ)</text>
+            <line x1="436" y1="132" x2="519" y2="132" stroke="#6f8fd4" stroke-width="1.4" marker-end="url(#arrow)"/>
+            <rect x="527" y="82" width="166" height="100" rx="13" fill="url(#panel)" stroke="#343d50"/>
+            <text x="610" y="117" text-anchor="middle" fill="#eef1f7" font-family="Inter, sans-serif" font-size="14" font-weight="600">Validation evaluation</text>
+            <text x="610" y="143" text-anchor="middle" fill="#8c96a9" font-family="IBM Plex Mono, monospace" font-size="10">one scalar realization</text>
+            <text x="610" y="163" text-anchor="middle" fill="#a8b8d6" font-family="Georgia, serif" font-size="13">L(w, ξ)</text>
+            <line x1="694" y1="132" x2="767" y2="132" stroke="#6f8fd4" stroke-width="1.4" marker-end="url(#arrow)"/>
+            <rect x="775" y="82" width="113" height="100" rx="13" fill="#192338" stroke="#83a9ff" stroke-width="1.4"/>
+            <text x="831" y="120" text-anchor="middle" fill="#eef1f7" font-family="Inter, sans-serif" font-size="14" font-weight="600">DF-SSQP</text>
+            <text x="831" y="145" text-anchor="middle" fill="#a8b8d6" font-family="IBM Plex Mono, monospace" font-size="10">update w</text>
+            <path d="M831 184 C830 248, 122 255, 99 174" fill="none" stroke="#46536e" stroke-width="1.2" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+            <rect x="288" y="230" width="344" height="34" rx="8" fill="#111620" stroke="#2c3547"/>
+            <text x="460" y="251" text-anchor="middle" fill="#aebad0" font-family="Georgia, serif" font-size="15">deterministic equality constraint:  w⊤w = 1</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Development</div>
+          <div>
+            <h2 class="section-title">How the testbed was refined</h2>
+            <p class="section-copy">The project has been progressively reformulated to isolate the optimization question more cleanly.</p>
+          </div>
+        </div>
+        <div class="evolution">
+          <article class="evolution-item">
+            <div class="evolution-phase">Application exploration</div>
+            <h3>Rolling financial-risk optimization</h3>
+            <p>Explored a real-data setting in which equality-constrained stochastic optimization could be evaluated through a rolling pipeline.</p>
+          </article>
+          <article class="evolution-item">
+            <div class="evolution-phase">Reframing</div>
+            <h3>Response-directed single-index learning</h3>
+            <p>Replaced date-specific portfolio decisions with one common direction that summarizes cross-sectional industry-risk information.</p>
+          </article>
+          <article class="evolution-item">
+            <div class="evolution-phase">Profile objective</div>
+            <h3>Inner training and scalar validation feedback</h3>
+            <p>Defined each outer evaluation through stochastic neural-network fitting followed by chronological validation loss.</p>
+          </article>
+          <article class="evolution-item">
+            <div class="evolution-phase">Current formulation</div>
+            <h3>Unit-norm equality-constrained black-box optimization</h3>
+            <p>Uses the sphere constraint to identify the index direction while preserving the nonlinear equality structure targeted by DF-SSQP.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">Status</div>
+          <div>
+            <h2 class="section-title">Current stage and public outputs</h2>
+            <p class="section-copy">The page reflects the active working formulation; experimental results will be added only after they are ready to share.</p>
+          </div>
+        </div>
+        <div class="status-grid">
+          <div class="status-card"><span class="status-dot current"></span><div><h4>Formulation and experimental design</h4><p>Current active stage</p></div></div>
+          <div class="status-card"><span class="status-dot"></span><div><h4>Data pipeline and baselines</h4><p>In preparation</p></div></div>
+          <div class="status-card"><span class="status-dot"></span><div><h4>DF-SSQP experiments</h4><p>Planned next stage</p></div></div>
+          <div class="status-card"><span class="status-dot"></span><div><h4>Out-of-sample analysis</h4><p>Reserved for final evaluation</p></div></div>
+        </div>
+        <div class="output-row" aria-label="Project outputs">
+          <span class="output-pill">Manuscript · in preparation</span>
+          <span class="output-pill">Code · not yet public</span>
+          <span class="output-pill">Results · forthcoming</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <a href="index.html#research">← Research overview</a>
+      <span>© 2026 Hoonki Yeo · Atlanta, GA</span>
+    </div>
+  </footer>
+</body>
+</html>
