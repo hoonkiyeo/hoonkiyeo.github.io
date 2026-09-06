@@ -16,8 +16,8 @@
       --surface: #14171e;
       --surface-2: #10131a;
       --ink: #eceef2;
-      --muted: #a0a6b1;
-      --faint: #666d79;
+      --muted: #b1b8c4;
+      --faint: #949caa;
       --accent: #83a9ff;
       --accent-soft: rgba(131, 169, 255, 0.12);
       --accent-line: rgba(131, 169, 255, 0.36);
@@ -59,7 +59,7 @@
     .nav-links a { padding: 8px 13px; border-radius: 7px; color: var(--muted); font-size: 0.88rem; font-weight: 500; text-decoration: none; }
     .nav-links a:hover { color: var(--ink); background: var(--line-soft); }
     .nav-links .active { color: var(--accent); }
-    .ext { margin-left: 2px; color: var(--faint); font-size: 0.72rem; }
+    .ext { margin-left: 2px; color: var(--faint); font-size: 0.875rem; }
 
     .project-hero {
       position: relative;
@@ -78,19 +78,19 @@
       pointer-events: none;
     }
     .project-hero .wrap { position: relative; z-index: 1; }
-    .back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; text-decoration: none; }
+    .back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; color: var(--muted); font-family: var(--font-mono); font-size: 0.875rem; text-decoration: none; }
     .back:hover { color: var(--accent); }
-    .eyebrow { color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .eyebrow { color: var(--accent); font-family: var(--font-mono); font-size: 0.875rem; letter-spacing: 0.14em; text-transform: uppercase; }
     h1 { max-width: 20ch; margin: 14px 0 20px; font-size: clamp(2.45rem, 6.5vw, 4.15rem); font-weight: 600; letter-spacing: -0.046em; line-height: 1.04; }
     .hero-lede { max-width: 66ch; color: var(--muted); font-size: 1.08rem; line-height: 1.72; }
     .hero-lede strong { color: var(--ink); font-weight: 600; }
     .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-    .chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(20,23,30,.72); color: var(--muted); font-family: var(--font-mono); font-size: 0.68rem; }
+    .chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(20,23,30,.72); color: var(--muted); font-family: var(--font-mono); font-size: 0.875rem; }
     .chip.accent { border-color: var(--accent-line); background: var(--accent-soft); color: #b9cbf7; }
 
     main section { padding: 58px 0; border-bottom: 1px solid var(--line); }
     .section-head { display: grid; grid-template-columns: 190px 1fr; gap: 28px; margin-bottom: 28px; }
-    .section-label { color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase; }
+    .section-label { color: var(--accent); font-family: var(--font-mono); font-size: 0.875rem; letter-spacing: 0.13em; text-transform: uppercase; }
     .section-title { margin-top: -5px; font-size: 1.45rem; font-weight: 600; letter-spacing: -0.025em; }
     .section-copy { max-width: 68ch; color: var(--muted); }
     .section-copy strong { color: var(--ink); }
@@ -106,48 +106,70 @@
       border-radius: 12px;
       background: var(--accent-soft);
     }
-    .method-note .mark { color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; }
+    .method-note .mark { color: var(--accent); font-family: var(--font-mono); font-size: 0.875rem; }
     .method-note p { color: #b8c2d6; font-size: 0.93rem; }
 
     .question-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     .question-card { padding: 24px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
     .question-card.primary { border-color: var(--accent-line); background: linear-gradient(150deg, rgba(131,169,255,.10), rgba(20,23,30,.96) 52%); }
-    .question-kind { margin-bottom: 13px; color: var(--accent); font-family: var(--font-mono); font-size: 0.67rem; letter-spacing: 0.09em; text-transform: uppercase; }
+    .question-kind { margin-bottom: 13px; color: var(--accent); font-family: var(--font-mono); font-size: 0.875rem; letter-spacing: 0.09em; text-transform: uppercase; }
     .question-card h3 { margin-bottom: 11px; font-size: 1.02rem; line-height: 1.48; }
     .question-card p { color: var(--muted); font-size: 0.9rem; }
 
     .formula-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     .formula-card { padding: 24px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-2); }
-    .formula-label { margin-bottom: 17px; color: var(--faint); font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .formula-label { margin-bottom: 17px; color: var(--faint); font-family: var(--font-mono); font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .equation { overflow-x: auto; padding: 5px 0 8px; color: #f3f5f9; font-family: "Cambria Math", "Times New Roman", serif; font-size: clamp(1.12rem, 3vw, 1.38rem); white-space: nowrap; }
     .formula-card p { margin-top: 14px; color: var(--muted); font-size: 0.88rem; }
 
-    .flow-panel { overflow: hidden; margin-top: 18px; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, #141924, #0e1117); }
-    .flow-panel svg { width: 100%; height: auto; min-height: 260px; display: block; }
+    .flow-panel { margin-top: 18px; padding: 28px; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, #141924, #0e1117); }
+    .diagram-label { margin-bottom: 27px; color: var(--faint); font-family: var(--font-mono); font-size: .875rem; }
+    .oracle-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; list-style: none; }
+    .oracle-flow li { position: relative; min-width: 0; }
+    .step-index { display: block; margin-bottom: 12px; color: var(--accent); font-family: var(--font-mono); font-size: .875rem; }
+    .oracle-flow h3 { margin-bottom: 8px; font-size: 1rem; font-weight: 500; line-height: 1.45; }
+    .oracle-flow p { color: var(--muted); font-size: .875rem; line-height: 1.6; }
+    .oracle-flow li:not(:last-child)::after { content: "→"; position: absolute; top: -2px; right: -18px; color: var(--accent); }
+    .flow-constraint { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .875rem; }
+    .flow-constraint > span { color: var(--accent); }
+    .flow-constraint p { color: var(--muted); }
 
     .pipeline { display: grid; grid-template-columns: repeat(3, 1fr); overflow: hidden; margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; }
     .pipeline-step { padding: 19px 20px; background: var(--surface-2); }
     .pipeline-step + .pipeline-step { border-left: 1px solid var(--line); }
-    .pipeline-step .num { color: var(--accent); font-family: var(--font-mono); font-size: 0.65rem; }
+    .pipeline-step .num { color: var(--accent); font-family: var(--font-mono); font-size: 0.875rem; }
     .pipeline-step h4 { margin: 7px 0 4px; font-size: 0.92rem; }
-    .pipeline-step p { color: var(--faint); font-size: 0.78rem; line-height: 1.5; }
+    .pipeline-step p { color: var(--faint); font-size: 0.875rem; line-height: 1.5; }
 
     .status-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .status-card { display: grid; grid-template-columns: 12px 1fr; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
     .status-dot { width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; background: var(--faint); }
     .status-dot.current { background: var(--accent); box-shadow: 0 0 0 5px rgba(131,169,255,.10); }
     .status-card h4 { font-size: 0.9rem; }
-    .status-card p { margin-top: 3px; color: var(--faint); font-size: 0.78rem; }
+    .status-card p { margin-top: 3px; color: var(--faint); font-size: 0.875rem; }
 
     footer { padding: 42px 0 62px; }
-    .foot { display: flex; justify-content: space-between; gap: 20px; color: var(--faint); font-family: var(--font-mono); font-size: 0.72rem; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; color: var(--faint); font-family: var(--font-mono); font-size: 0.875rem; }
     .foot a { color: var(--muted); text-decoration: none; }
     .foot a:hover { color: var(--accent); }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    #progress { scroll-margin-top: 110px; }
+    .section-head > div, .formula-card { min-width: 0; }
+    .technical-note { margin-top: 24px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); }
+    .technical-note summary { padding: 18px 21px; cursor: pointer; color: var(--ink); font-size: .9375rem; }
+    .technical-note summary::marker { color: var(--accent); }
+    .technical-note summary:hover { color: var(--accent); }
+    .technical-note[open] summary { border-bottom: 1px solid var(--line); }
+    .technical-content { padding: 20px 23px; color: var(--muted); font-size: .9375rem; }
+    .technical-content p + p { margin-top: 14px; }
+    .technical-content strong { color: var(--ink); font-weight: 500; }
+    .updated { margin-top: 22px; color: var(--faint); font-size: .875rem; }
+    .nav-inner { min-height: var(--nav-h); height: auto; padding-top: 10px; padding-bottom: 10px; }
+    .nav-links { flex-wrap: wrap; }
 
     @media (max-width: 720px) {
       .wrap { padding: 0 22px; }
-      .nav-links a { padding: 8px 9px; font-size: .83rem; }
+      .nav-links a { padding: 8px 9px; font-size: 0.875rem; }
       .project-hero { padding: 57px 0 46px; }
       h1 { font-size: clamp(2.15rem, 12vw, 3.1rem); }
       main section { padding: 45px 0; }
@@ -155,8 +177,19 @@
       .question-grid, .formula-grid, .status-grid { grid-template-columns: 1fr; }
       .pipeline { grid-template-columns: 1fr; }
       .pipeline-step + .pipeline-step { border-left: 0; border-top: 1px solid var(--line); }
-      .flow-panel svg { min-height: 330px; }
+      .flow-panel { padding: 23px; }
+      .oracle-flow { grid-template-columns: 1fr; gap: 30px; }
+      .oracle-flow li { padding-left: 42px; }
+      .oracle-flow .step-index { position: absolute; left: 0; top: 1px; }
+      .oracle-flow li:not(:last-child)::after { content: "↓"; left: 5px; right: auto; top: auto; bottom: -29px; }
       .foot { flex-direction: column; }
+    }
+
+    @media (max-width: 420px) {
+      .nav-inner { flex-wrap: wrap; gap: 4px; }
+      .nav-links { width: 100%; }
+      .nav-links a:first-child { padding-left: 0; }
+      .method-note { grid-template-columns: 1fr; gap: 8px; }
     }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -200,14 +233,14 @@
           <div>
             <h2 class="section-title">Optimization methodology first</h2>
             <p class="section-copy">
-              The outer decision variable <strong>w</strong> defines a one-dimensional index of industry-level risk features.
-              For each candidate direction, a neural prediction model is retrained using a fixed finite-step stochastic procedure.
-              The resulting validation loss provides one noisy scalar evaluation to DF-SSQP, while the unit-norm equality
-              constraint identifies the direction rather than an arbitrary scale.
+              The outer variable <strong>w ∈ ℝ<sup>48</sup></strong> is a shared single-index direction.
+              For each candidate, a fresh neural prediction model is fitted using a fixed finite-step stochastic procedure.
+              Its validation loss supplies noisy scalar feedback to the outer optimizer. The unit-norm equality constraint
+              fixes the index scale, with direction recovery evaluated up to sign.
             </p>
             <div class="method-note">
               <span class="mark">ROLE</span>
-              <p>Future benchmark-risk forecasting is the real-data testbed. The primary research focus is optimization in the stochastic, equality-constrained, zero-order setting.</p>
+              <p>The study progresses from known-solution optimizer validation to synthetic learning experiments, followed by a planned industry-risk forecasting application. Current work is at the synthetic experiment-design stage.</p>
             </div>
           </div>
         </div>
@@ -224,12 +257,12 @@
           <article class="question-card primary">
             <div class="question-kind">Primary · Methodological</div>
             <h3>Can DF-SSQP optimize an equality-constrained direction when every objective evaluation requires stochastic inner training?</h3>
-            <p>The optimizer observes neither derivatives nor fitted inner parameters—only noisy scalar validation losses.</p>
+            <p>The planned synthetic experiments examine how constraint-Jacobian information affects this task by pairing an analytic-constraint variant (AI) with the fully zeroth-order mode (ZI). Both use noisy scalar objective feedback and will be reported separately.</p>
           </article>
           <article class="question-card">
             <div class="question-kind">Secondary · Application</div>
-            <h3>Does a learned scalar index of industry risk add predictive information for future benchmark risk?</h3>
-            <p>The index is evaluated after controlling for the benchmark’s current aggregate risk state.</p>
+            <h3>Can the learned index recover a planted signal and add predictive information beyond the control?</h3>
+            <p>Synthetic experiments separate recovery of the generating direction, up to sign, from improvement in validation loss. Future benchmark-risk forecasting is the planned application; predictive gains have not yet been established.</p>
           </article>
         </div>
       </div>
@@ -248,13 +281,13 @@
         <div class="formula-grid">
           <article class="formula-card">
             <div class="formula-label">Inner prediction model</div>
-            <div class="equation">ŷ<sub>t</sub> = βu<sub>t</sub> + F<sub>θ</sub>(w<sup>⊤</sup>z<sub>t</sub>)</div>
-            <p>The neural link receives only the scalar index. The coefficient β separately controls for current aggregate benchmark risk.</p>
+            <div class="equation">ŷ<sub>m</sub> = βu<sub>m</sub> + F<sub>θ</sub>(w<sup>⊤</sup>z<sub>m</sub>)</div>
+            <p>The neural link receives a scalar index of the features z; β accounts for the control u. For each w, β and θ are finite-training outputs that depend on the training randomness ξ, rather than exact inner minimizers.</p>
           </article>
           <article class="formula-card">
             <div class="formula-label">Outer optimization problem</div>
-            <div class="equation">min E<sub>ξ</sub>[L(w, ξ)] &nbsp; s.t. &nbsp; ‖w‖<sub>2</sub> = 1</div>
-            <p>The expectation is over stochastic inner-training randomness; DF-SSQP accesses noisy realizations of the scalar validation loss.</p>
+            <div class="equation">min<sub>w ∈ ℝ⁴⁸</sub> E<sub>ξ</sub>[L(w, ξ)] &nbsp; s.t. &nbsp; w<sup>⊤</sup>w − 1 = 0</div>
+            <p>The expectation is over inner-training randomness with the data and training procedure fixed. A known synthetic generating direction does not make the minimizer of this finite-training objective known.</p>
           </article>
         </div>
 
@@ -271,57 +304,46 @@
         <div class="section-head">
           <div class="section-label">Optimization loop</div>
           <div>
-            <h2 class="section-title">What one outer evaluation requires</h2>
-            <p class="section-copy">The expensive, noisy mapping from a candidate direction to validation loss is treated as a black-box oracle.</p>
+            <h2 class="section-title">From paired evaluations to an update</h2>
+            <p class="section-copy">Each objective call fits a fresh model on the same fixed training data and returns validation loss. Paired plus/minus evaluations share initialization and minibatch randomness. Perturbed candidates are evaluated without projection onto the sphere.</p>
           </div>
         </div>
         <div class="flow-panel">
-          <svg viewBox="0 0 920 290" role="img" aria-label="Candidate direction, stochastic inner training, validation loss, and DF-SSQP update">
-            <defs>
-              <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#6f8fd4" /></marker>
-              <linearGradient id="panel" x1="0" x2="1"><stop offset="0" stop-color="#202737"/><stop offset="1" stop-color="#171c27"/></linearGradient>
-            </defs>
-            <text x="42" y="38" fill="#78849a" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.6">ONE NOISY ZERO-ORDER ORACLE CALL</text>
-            <circle cx="96" cy="132" r="38" fill="#192338" stroke="#83a9ff" stroke-width="1.6"/>
-            <text x="96" y="139" text-anchor="middle" fill="#eef1f7" font-family="Georgia, serif" font-style="italic" font-size="30">w</text>
-            <text x="96" y="194" text-anchor="middle" fill="#758095" font-family="IBM Plex Mono, monospace" font-size="10">candidate direction</text>
-            <line x1="136" y1="132" x2="222" y2="132" stroke="#6f8fd4" stroke-width="1.4" marker-end="url(#arrow)"/>
-            <rect x="230" y="82" width="205" height="100" rx="13" fill="url(#panel)" stroke="#343d50"/>
-            <text x="332" y="117" text-anchor="middle" fill="#eef1f7" font-family="Inter, sans-serif" font-size="14" font-weight="600">Stochastic inner training</text>
-            <text x="332" y="142" text-anchor="middle" fill="#8c96a9" font-family="IBM Plex Mono, monospace" font-size="10">fixed architecture + finite steps</text>
-            <text x="332" y="162" text-anchor="middle" fill="#a8b8d6" font-family="Georgia, serif" font-size="12">β(w, ξ), θ(w, ξ)</text>
-            <line x1="436" y1="132" x2="519" y2="132" stroke="#6f8fd4" stroke-width="1.4" marker-end="url(#arrow)"/>
-            <rect x="527" y="82" width="166" height="100" rx="13" fill="url(#panel)" stroke="#343d50"/>
-            <text x="610" y="117" text-anchor="middle" fill="#eef1f7" font-family="Inter, sans-serif" font-size="14" font-weight="600">Validation evaluation</text>
-            <text x="610" y="143" text-anchor="middle" fill="#8c96a9" font-family="IBM Plex Mono, monospace" font-size="10">one scalar realization</text>
-            <text x="610" y="163" text-anchor="middle" fill="#a8b8d6" font-family="Georgia, serif" font-size="13">L(w, ξ)</text>
-            <line x1="694" y1="132" x2="767" y2="132" stroke="#6f8fd4" stroke-width="1.4" marker-end="url(#arrow)"/>
-            <rect x="775" y="82" width="113" height="100" rx="13" fill="#192338" stroke="#83a9ff" stroke-width="1.4"/>
-            <text x="831" y="120" text-anchor="middle" fill="#eef1f7" font-family="Inter, sans-serif" font-size="14" font-weight="600">DF-SSQP</text>
-            <text x="831" y="145" text-anchor="middle" fill="#a8b8d6" font-family="IBM Plex Mono, monospace" font-size="10">update w</text>
-            <path d="M831 184 C830 248, 122 255, 99 174" fill="none" stroke="#46536e" stroke-width="1.2" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
-            <rect x="288" y="230" width="344" height="34" rx="8" fill="#111620" stroke="#2c3547"/>
-            <text x="460" y="251" text-anchor="middle" fill="#aebad0" font-family="Georgia, serif" font-size="15">deterministic equality constraint:  w⊤w = 1</text>
-          </svg>
+          <div class="diagram-label">One paired objective estimate · Two fresh inner fits</div>
+          <ol class="oracle-flow" aria-label="Paired evaluations and the outer update">
+            <li><span class="step-index">01</span><h3>Perturb direction</h3><p>Evaluate w + bΔ and w − bΔ without projection.</p></li>
+            <li><span class="step-index">02</span><h3>Fit two models</h3><p>Fresh training with shared initialization and minibatch randomness ξ.</p></li>
+            <li><span class="step-index">03</span><h3>Evaluate losses</h3><p>Return a scalar validation loss for each candidate on fixed data.</p></li>
+            <li><span class="step-index">04</span><h3>Update direction</h3><p>Use the paired estimate in the equality-constrained SQP step.</p></li>
+          </ol>
+          <div class="flow-constraint"><span>Constraint information</span><p>w<sup>⊤</sup>w = 1 · Analytic Jacobian (AI) or zeroth-order estimate (ZI)</p></div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="progress">
       <div class="wrap">
         <div class="section-head">
           <div class="section-label">Status</div>
           <div>
             <h2 class="section-title">Current stage</h2>
-            <p class="section-copy">The project is currently in formulation and experimental design. Public results will be added only after they are ready to share.</p>
+            <p class="section-copy">I am designing synthetic learning experiments with both analytic and estimated constraint Jacobians. Optimizer validation is complete with a documented confirmation exception; predictive evaluation is still ahead.</p>
           </div>
         </div>
         <div class="status-grid">
-          <div class="status-card"><span class="status-dot current"></span><div><h4>Formulation and experimental design</h4><p>Current active stage</p></div></div>
-          <div class="status-card"><span class="status-dot"></span><div><h4>Data pipeline and baselines</h4><p>In preparation</p></div></div>
-          <div class="status-card"><span class="status-dot"></span><div><h4>DF-SSQP experiments</h4><p>Planned next stage</p></div></div>
-          <div class="status-card"><span class="status-dot"></span><div><h4>Out-of-sample analysis</h4><p>Reserved for final evaluation</p></div></div>
+          <div class="status-card"><span class="status-dot"></span><div><h4>Stage A · Optimizer validation</h4><p>Closed with qualification; the confirmation failure and its diagnosis are retained.</p></div></div>
+          <div class="status-card"><span class="status-dot current"></span><div><h4>Stage B · Synthetic learning</h4><p>Design in progress. Both AI and ZI are required; numerical settings remain proposed.</p></div></div>
+          <div class="status-card"><span class="status-dot"></span><div><h4>Real-data application</h4><p>Planned industry-risk forecasting study, following synthetic evaluation.</p></div></div>
+          <div class="status-card"><span class="status-dot"></span><div><h4>Final out-of-sample evaluation</h4><p>Test data remain locked during development and method selection.</p></div></div>
         </div>
+        <details class="technical-note">
+          <summary>Stage A validation · Technical details</summary>
+          <div class="technical-content">
+            <p>The frozen confirmation missed its predeclared zero-failure criterion: <strong>431 of 432 path gates</strong> and <strong>44 of 45 group gates</strong> passed. Stage A closed with this qualification after the implementation was judged sufficiently validated to proceed.</p>
+            <p>The retained exception was traced to early zeroth-order constraint-Jacobian estimation followed by persistent step-size contraction. The failure remains part of the record; these experiments do not establish predictive gains in the learning application.</p>
+          </div>
+        </details>
+        <p class="updated">Last updated September 2026</p>
       </div>
     </section>
   </main>
