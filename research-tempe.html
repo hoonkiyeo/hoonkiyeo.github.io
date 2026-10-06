@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hoonki Yeo · Operations Research</title>
-  <meta name="description" content="Hoonki Yeo is an M.S. student in Operations Research at Georgia Tech, interested in optimization algorithms, decision-making under uncertainty, and real-world applications.">
+  <title>Multimodal accessibility in Tempe · Hoonki Yeo</title>
+  <meta name="description" content="An early-stage Data4Good team project exploring network analysis and optimization for walking, cycling, and public transit accessibility in Tempe, Arizona.">
   <meta name="theme-color" content="#fbfaf7">
   <meta name="color-scheme" content="light">
-  <link rel="canonical" href="https://hoonkiyeo.github.io/">
-  <meta property="og:title" content="Hoonki Yeo · Operations Research">
-  <meta property="og:description" content="Hoonki Yeo is an M.S. student in Operations Research at Georgia Tech, interested in optimization algorithms, decision-making under uncertainty, and real-world applications.">
+  <link rel="canonical" href="https://hoonkiyeo.github.io/research-tempe.html">
+  <meta property="og:title" content="Multimodal accessibility in Tempe · Hoonki Yeo">
+  <meta property="og:description" content="An early-stage Data4Good team project exploring network analysis and optimization for walking, cycling, and public transit accessibility in Tempe, Arizona.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hoonkiyeo.github.io/">
+  <meta property="og:url" content="https://hoonkiyeo.github.io/research-tempe.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -239,11 +239,6 @@ svg {
   font-size:14px;
   color:var(--muted);
   margin-top:22px;
-}
-.research-list {
-  display:grid;
-  gap:24px;
-  min-width:0;
 }
 .research-card {
   border:1px solid #d9e2e5;
@@ -770,104 +765,58 @@ svg {
 <a class="skip" href="#main-content">Skip to content</a>
 <header class="site-header">
   <div class="wrap nav">
-    <a class="brand" href="#home">Hoonki Yeo</a>
+    <a class="brand" href="index.html#home">Hoonki Yeo</a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#research" class="active">Research</a>
       <a href="cv.pdf" target="_blank" rel="noopener">CV <span aria-hidden="true">↗</span><span class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"> (opens in a new tab)</span></a>
     </nav>
   </div>
 </header>
 
 <main id="main-content">
-  <section class="hero wrap" id="home" aria-labelledby="name">
-    <p class="eyebrow">Operations Research · Georgia Tech</p>
-    <h1 id="name">Hoonki Yeo</h1>
-    <p class="affiliation">M.S. student in Operations Research at Georgia Tech.</p>
-    <nav class="hero-links" aria-label="Profiles and documents">
-      <a href="mailto:hyeo32@gatech.edu">Email <span aria-hidden="true">↗</span></a>
-      <a href="cv.pdf">Curriculum vitae <span aria-hidden="true">↗</span></a>
-      <a href="https://github.com/hoonkiyeo">GitHub <span aria-hidden="true">↗</span></a>
-      <a href="https://www.linkedin.com/in/kyle-hoon-ki-yeo-4a9225208/">LinkedIn <span aria-hidden="true">↗</span></a>
-    </nav>
-    <p class="application-note">Applying to Ph.D. programs for <strong>Fall 2027</strong>.</p>
-    <!-- The text-only layout is complete. Add a portrait when a photograph is available. -->
+  <section class="project-hero wrap" aria-labelledby="project-title">
+    <a class="back" href="index.html#research"><span aria-hidden="true">←</span> All research</a>
+    <p class="eyebrow">Early-stage research</p>
+    <h1 id="project-title">Multimodal accessibility and the 20-minute city in Tempe</h1>
+    <p class="project-lede">Exploring how walking, low-stress cycling, and public transit connect residents to everyday destinations.</p>
+    <div class="project-meta"><span>Data4Good Analytics Competition</span><span>Team project</span><span>Tempe, Arizona</span></div>
   </section>
 
-  <section class="section wrap" id="about" aria-labelledby="about-heading">
+  <section class="section wrap" aria-labelledby="question-heading">
     <div class="section-grid">
-      <h2 class="section-heading" id="about-heading">About me</h2>
+      <h2 class="section-heading" id="question-heading">The question</h2>
       <div class="prose">
-        <p>I earned my B.S. in Data Science from the University of Wisconsin–Madison. After graduation, I returned to South Korea and worked as a data scientist in Seoul, developing forecasting and recommendation systems.</p>
-        <p>I am now pursuing an M.S. in Operations Research at the Georgia Institute of Technology. I work with <a href="https://www.isye.gatech.edu/users/sen-na">Prof. Sen Na</a> on applying derivative-free stochastic optimization to a constrained learning problem, connecting the algorithm’s formulation with implementation and computational experiments.</p>
+        <p>How does access to daily destinations differ across transportation modes, and how would changes to network connections or transit service affect twenty-minute coverage and travel times?</p>
+        <p>This project is being developed for the Data4Good Analytics Competition, with a team-defined focus on multimodal accessibility and Tempe’s twenty-minute city goal.</p>
+        <p>Building on the <a href="https://www.mdpi.com/2071-1050/12/1/129">Tempe accessibility framework of Capasso Da Silva, King, and Lemar (2020)</a>, we are developing an approach to compare walking, low-stress cycling, and public transit access to selected daily non-work destinations.</p>
       </div>
     </div>
   </section>
 
-  <section class="section wrap" id="interests" aria-labelledby="interests-heading">
+  <section class="section wrap" aria-labelledby="approach-heading">
     <div class="section-grid">
-      <h2 class="section-heading" id="interests-heading">Research interests</h2>
+      <h2 class="section-heading" id="approach-heading">Planned approach</h2>
+      <div>
+        <p class="prose">The analytical scope will be refined around the data we can obtain and validate. We plan to connect network analysis and route optimization with comparisons of accessibility across modes and scenarios.</p>
+        <ol class="approach">
+          <li><h3>Represent the transportation networks</h3><p>Assess public network, transit schedule, residential, and destination data, checking connectivity, completeness, and the spatial detail the data can support.</p></li>
+          <li><h3>Estimate feasible travel times</h3><p>Use constrained route optimization to estimate travel times while accounting for walking access, cycling stress, transit waiting, and transfers.</p></li>
+          <li><h3>Compare accessibility and potential improvements</h3><p>Evaluate destination-specific twenty-minute coverage and travel times under baseline conditions and selected network or service scenarios. Examine how routing assumptions affect the comparisons.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="progress-heading">
+    <div class="section-grid">
+      <h2 class="section-heading" id="progress-heading">Current work</h2>
       <div class="prose">
-        <p>I am interested in optimization algorithms, particularly for problems involving uncertainty, and their applications to learning and decision-making. This includes optimization for machine learning as well as optimization for operational decision-making.</p>
-        <p>In a Ph.D., I hope to study and develop optimization methods, with an emphasis on understanding what makes them effective in real-world applications.</p>
+        <p>The project is in the literature review, data assessment, and research design stage. We are identifying usable public datasets and refining the destination categories, study area, and network assumptions.</p>
+        <p>Our goal is to explain where and why accessibility differs across modes, how modeled improvements change coverage and travel time, and what those findings imply for transportation planning in Tempe.</p>
+        <p class="updated">Last updated <time datetime="2026-10-05">October 5, 2026</time></p>
+        <a class="text-link" href="index.html#research"><span aria-hidden="true">←</span> Back to research overview</a>
       </div>
-    </div>
-  </section>
-
-  <section class="section wrap" id="research" aria-labelledby="research-heading">
-    <div class="section-grid">
-      <h2 class="section-heading" id="research-heading"><small>Current work</small>Selected research</h2>
-      <div class="research-list">
-        <article class="research-card">
-          <div class="card-meta"><span>With Prof. Sen Na</span><span>Work in progress</span></div>
-          <h3><a href="research-dfssqp.html">Derivative-free optimization for constrained learning</a></h3>
-          <p>How can we optimize a learning model when evaluations are noisy and costly, and its parameters must satisfy an equality constraint?</p>
-          <p>I study this question by implementing and evaluating derivative-free stochastic SQP (DF-SSQP) for a single-index learning problem. This ongoing work examines how the method performs in a learning application and how its algorithmic choices affect optimization.</p>
-          <a class="text-link" href="research-dfssqp.html">Explore the project <span aria-hidden="true">→</span></a>
-        </article>
-        <article class="research-card">
-          <div class="card-meta"><span>Data4Good Analytics Competition</span><span>Team project · Early-stage research</span></div>
-          <h3><a href="research-tempe.html">Multimodal accessibility and the 20-minute city in Tempe</a></h3>
-          <p>How do walking, cycling, and public transit differ in their ability to connect residents to daily destinations within twenty minutes?</p>
-          <p>We are developing a study of transportation accessibility in Tempe, exploring network analysis and optimization to compare coverage, travel times, and potential improvements. Current work focuses on reviewing prior research, assessing public data, and refining the analytical framework.</p>
-          <a class="text-link" href="research-tempe.html">Explore the project <span aria-hidden="true">→</span></a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section wrap" id="background" aria-labelledby="background-heading">
-    <div class="section-grid">
-      <h2 class="section-heading" id="background-heading">Background</h2>
-      <div class="background-grid">
-        <div>
-          <p class="small-heading">Education</p>
-          <div class="entry"><h3>Georgia Institute of Technology</h3><p>M.S. in Operations Research</p><p class="date">Expected December 2026</p></div>
-          <div class="entry"><h3>University of Wisconsin–Madison</h3><p>B.S. in Data Science</p><p class="date">2019–2022</p><p class="detail">Graduated with Distinction<br>Four-time Dean’s List</p></div>
-        </div>
-        <div>
-          <p class="small-heading">Industry experience</p>
-          <div class="entry"><h3>Aivelabs</h3><p>Data Scientist · Seoul</p><p class="date">2023–2025</p><p class="detail">Built production workflows for customer value forecasting and recommendation, from data preparation to model deployment and scoring.</p></div>
-          <div class="entry"><h3>Retentics</h3><p>Data Analyst Intern · Seoul</p><p class="date">2022–2023</p><p class="detail">Developed reusable data preprocessing tools and conducted analyses for client projects.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section wrap" id="personal" aria-labelledby="personal-heading">
-    <div class="section-grid">
-      <h2 class="section-heading" id="personal-heading">Personal</h2>
-      <p class="personal-copy">I love staying active, especially jogging and working out at the gym. Exercise helps me recharge and maintain balance in my daily life.</p>
-    </div>
-  </section>
-
-  <section class="section wrap" id="news" aria-labelledby="news-heading">
-    <div class="section-grid">
-      <h2 class="section-heading" id="news-heading">News</h2>
-      <ul class="news">
-        <li><time datetime="2026-03">Mar 2026</time><span>Started research with Prof. Sen Na on derivative-free stochastic optimization.</span></li>
-        <li><time datetime="2025-08">Aug 2025</time><span>Joined Georgia Tech as an M.S. student in Operations Research.</span></li>
-      </ul>
     </div>
   </section>
 </main>
