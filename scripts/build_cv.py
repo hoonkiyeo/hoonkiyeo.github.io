@@ -132,7 +132,9 @@ in_header = False
 
 def flush_entry():
     if entry:
-        story.append(KeepTogether(entry[:]))
+        # Keep a section heading with its first complete entry when pages flow.
+        heading = [story.pop()] if story and isinstance(story[-1], Section) else []
+        story.append(KeepTogether(heading + entry[:]))
         entry.clear()
 
 for raw in source.splitlines():
