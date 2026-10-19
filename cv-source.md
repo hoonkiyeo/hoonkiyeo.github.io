@@ -1,10 +1,10 @@
-<!-- updated: October 6, 2026 -->
+<!-- updated: October 18, 2026 -->
 # Hoonki Yeo
 Atlanta, GA | [hyeo32@gatech.edu](mailto:hyeo32@gatech.edu) | +1 404-545-8722
 [hoonkiyeo.github.io](https://hoonkiyeo.github.io/) | [GitHub](https://github.com/hoonkiyeo) | [LinkedIn](https://www.linkedin.com/in/kyle-hoon-ki-yeo-4a9225208/)
 
 ## Research Interests
-Optimization algorithms under uncertainty; optimization for machine learning; optimization for operational decision-making.
+Optimization under uncertainty; optimization for machine learning; optimization for operational decision-making.
 
 ## Education
 ### Georgia Institute of Technology | Aug 2025 - Dec 2026 (expected)
@@ -18,14 +18,15 @@ Optimization algorithms under uncertainty; optimization for machine learning; op
 ## Research Experience
 ### Derivative-Free Stochastic Optimization for Constrained Learning | Mar 2026 - Present
 *Georgia Institute of Technology; Advisor: Prof. Sen Na* | Atlanta, GA
-- Formulated a partially linear single-index learning problem as stochastic optimization over a unit-norm index direction, with objective evaluations obtained through stochastic neural-network training.
-- Implemented and verified the first-order variant of derivative-free stochastic sequential quadratic programming (DF-SSQP), including gradient estimation, moving averages, and constrained SQP updates.
-- Designed and conducted controlled experiments comparing analytic and estimated constraint Jacobians and alternative perturbation distributions, assessing development loss, constraint violation, and variability across stochastic runs.
+- Formulated a partially linear single-index learning problem as equality-constrained stochastic optimization, with noisy objective evaluations arising from neural-network training.
+- Implemented derivative-free stochastic sequential quadratic programming (DF-SSQP), verified the implementation numerically, and examined the effects of constraint-Jacobian estimation on optimization progress and feasibility.
+- Designing and conducting controlled experiments to assess the value of optimizing the index direction relative to fixed-direction models, and to characterize DF-SSQP’s behavior, strengths, and limitations through comparisons with zeroth- and first-order methods.
 
-### Multimodal Accessibility for a 20-Minute City in Tempe, Arizona | Sep 2026 - Present
+### Optimizing 20-Minute Transit Accessibility under Uncertainty | Sep 2026 - Present
 *Data4Good Analytics Competition · Team Research Project*
-- Designing a comparative study of walking, low-stress cycling, and public transit accessibility to daily destinations using twenty-minute coverage and travel-time measures.
-- Reviewing network, transit-schedule, and destination data to design constrained routing analyses of how connectivity, cycling stress, and service conditions limit accessibility.
+- Compiled and mapped bus, light rail, and streetcar networks in Tempe, Arizona, using GTFS data and checking stop coverage against the municipal boundary.
+- Designing a residential-unit-weighted analysis of 20-minute access to daily destinations, accounting for walking, waiting, in-vehicle travel, and transfers.
+- Designing an optimization study of targeted transit service adjustments to improve accessibility under uncertain travel times and transfer conditions.
 
 ## Professional Experience
 ### Data Scientist | 2024 - 2025
@@ -34,7 +35,7 @@ Optimization algorithms under uncertainty; optimization for machine learning; op
 - Deployed personalized recommendations and a multi-armed bandit feedback loop for outreach targeting.
 - Developed customer segmentation and KPI dashboards to support marketing and sales decisions in collaboration with cross-functional teams.
 
-### Data Analyst Intern | 2022 - 2023
+### Data Analyst | 2022 - 2023
 *Retentics* | Seoul, South Korea
 - Developed an internal Python preprocessing package to standardize data preparation workflows.
 - Maintained data-processing and validation pipelines and conducted analyses for client projects to support operational decisions.
